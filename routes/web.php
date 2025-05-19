@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/index', [AuthController::class, 'index'])->name('index');
 
-Route::get('/export-pdf',[BukuController::class,'exportPdf']);
+Route::get('/export-pdf-buku',[BukuController::class,'exportPdf']);
 
 // Route untuk Data Buku
 Route::get('/buku', [BukuController::class, 'bukutampil']);
@@ -44,7 +44,7 @@ Route::post('/anggota/tambah', [AnggotaController::class, 'anggotatambah']);
 Route::delete('/anggota/hapus/{idanggota}', [AnggotaController::class, 'anggotahapus']);
 Route::put('/anggota/edit/{idanggota}', [AnggotaController::class, 'anggotaedit']);
 Route::post('/anggota/laporananggota', [AnggotaController::class, 'anggotatambah']);
-Route::get('/export-anggota pdf',[AnggotaController::class,'exportPdf']);
+Route::get('/export-pdf-anggota',[AnggotaController::class,'exportPdf']);
 
 
 // Route untuk Data Transaksi

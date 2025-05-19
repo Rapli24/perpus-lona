@@ -30,6 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Drop foreign keys before dropping table
         Schema::table('tbtransaksi', function (Blueprint $table) {
             $table->dropForeign(['idbuku']);
             $table->dropForeign(['idanggota']);

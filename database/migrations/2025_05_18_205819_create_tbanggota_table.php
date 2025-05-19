@@ -20,10 +20,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Tambahkan foreign key ke tbtransaksi jika kolom idanggota sudah ada di sana
+        // Hapus bagian ini — foreign key harus dibuat di migration tbtransaksi
+        /*
         Schema::table('tbtransaksi', function (Blueprint $table) {
             $table->foreign('idanggota')->references('idanggota')->on('tbanggota')->onDelete('cascade');
         });
+        */
     }
 
     /**
@@ -31,11 +33,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Hapus foreign key dulu agar tidak error saat rollback
-        Schema::table('tbtransaksi', function (Blueprint $table) {
-            $table->dropForeign(['idanggota']);
-        });
-
+        // Tidak perlu drop foreign key disini karena tidak dibuat di sini
+        
         Schema::dropIfExists('tbanggota');
     }
 };

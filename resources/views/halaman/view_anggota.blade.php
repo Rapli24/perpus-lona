@@ -7,7 +7,7 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAnggotaTambah"> 
     Tambah Data Anggota
 </button>
-<a href="/export-pdf" class="btn btn-danger" target="_blank">Laporan Anggota</a>
+<a href="/export-pdf-anggota" class="btn btn-danger" target="_blank">Laporan Anggota</a>
 
 <p>
 <table class="table table-bordered table-striped">

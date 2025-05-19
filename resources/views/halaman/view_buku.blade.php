@@ -8,7 +8,7 @@
     Tambah Data Buku 
     </button>
 
-<a href="/export-pdf" class="btn btn-danger" target="_blank">Laporan Buku</a>
+<a href="/export-pdf-buku" class="btn btn-danger" target="_blank">Laporan Buku</a>
 
 
 <p>

@@ -11,6 +11,8 @@
         <script type="text/javascript" src="{{ asset('assets') }}/js/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="{{ asset('assets') }}/js/bootstrap.js"></script> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     </head>
 

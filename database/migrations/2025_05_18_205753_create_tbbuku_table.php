@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('tbbuku', function (Blueprint $table) {
@@ -19,23 +16,10 @@ return new class extends Migration
             $table->string('penerbit');
             $table->timestamps();
         });
-
-        // Tambahkan foreign key secara terpisah jika tbtransaksi sudah ada
-        Schema::table('tbtransaksi', function (Blueprint $table) {
-            $table->foreign('idbuku')->references('idbuku')->on('tbbuku')->onDelete('cascade');
-        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        // Hapus foreign key dulu agar tidak error saat rollback
-        Schema::table('tbtransaksi', function (Blueprint $table) {
-            $table->dropForeign(['idbuku']);
-        });
-
         Schema::dropIfExists('tbbuku');
     }
 };
