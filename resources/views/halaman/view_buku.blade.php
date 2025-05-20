@@ -184,15 +184,4 @@ Data Per Halaman : {{ $tbbuku->perPage() }} <br />
         </div>
     </div>
 </div>
-
-<!-- Modal Report -->
- <!-- <div class="modal fade" id="modalLaporanBuku" >
- <td align="center">{{ $index + $tbbuku->firstItem() }}</td>
-            <td>{{ $bk->idbuku }}</td>
-            <td>{{ $bk->judulbuku }}</td>
-            <td>{{ $bk->kategori }}</td>
-            <td>{{ $bk->pengarang }}</td>
-            <td>{{ $bk->penerbit }}</td>
-            <td>{{ $bk->status }}</td>
-</div> -->
 @endsection
