@@ -56,37 +56,19 @@ Route::put('/transaksi/edit/{idtransaksi}', [TransaksiController::class, 'transa
 Route::get('/export-pdf',[TransaksiController::class,'exportPdf']);
 
 
+
+
+
 Route::get('/',function(){return view('welcome');
 });
+
 Route::get('login', [AuthenticatedSessionController::class, 'create'])
     ->name('login');
 
 
-// Route untuk menampilkan form login
-// Route::get('/login', function () {
-//     return view('login'); // pastikan kamu punya file view 'login.blade.php'
-// })->name('login');
 
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');
 });
-// Route untuk proses login
-// Route::post('/login', function (Illuminate\Http\Request $request) {
-//     $credentials = $request->only('email', 'password');
-
-//     if (Auth::attempt($credentials)) {
-//         $request->session()->regenerate();
-//         return redirect()->intended('/index'); // arahkan ke dashboard setelah login sukses
-//     }
-
-//     return back()->withErrors([
-//         'email' => 'Email atau password salah.',
-//     ]);
-// });
-
-// Route::get('/index', [HomeController::class, 'index'])->name('index');
-
-
-
 require __DIR__.'/auth.php';
