@@ -15,7 +15,10 @@
 <div class="header">
     <table style="width:100%;">
         <tr>
-            <td><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpolmed.ac.id%2Fprofil-institusi%2F&psig=AOvVaw3QXJ-NPoh_hvYnFwGZhw7Y&ust=1747729263967000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJCosoGNr40DFQAAAAAdAAAAABAE"></td>
+            <td><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpolmed.ac.
+            id%2Fprofil-institusi%2F&psig=AOvVaw3QXJ-NPoh_hvYnFwGZhw7Y&us
+            t=1747729263967000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJCo
+            soGNr40DFQAAAAAdAAAAABAE"></td>
             <td style="text-align: center;">
                 <h1 style="margin: 0;">POLITEKNIK NEGERI MEDAN</h1>
                 <p style="margin: 0;">

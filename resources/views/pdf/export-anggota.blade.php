@@ -16,6 +16,7 @@
 <div class="header">
     <table style="width:100%;">
         <tr>
+            <td><</td>
             <td style="text-align: center;">
                 <h1 style="margin: 0;">POLITEKNIK NEGERI MEDAN</h1>
                 <p style="margin: 0;">
