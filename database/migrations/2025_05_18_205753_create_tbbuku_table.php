@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('pengarang');
             $table->string('penerbit');
+            $table->string('status');
             $table->timestamps();
         });
     }

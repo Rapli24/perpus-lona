@@ -20,13 +20,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Hapus bagian ini — foreign key harus dibuat di migration tbtransaksi
-        /*
-        Schema::table('tbtransaksi', function (Blueprint $table) {
-            $table->foreign('idanggota')->references('idanggota')->on('tbanggota')->onDelete('cascade');
-        });
-        */
-    }
+        
 
     /**
      * Reverse the migrations.
