@@ -1,68 +1,77 @@
 <?php
-
 namespace App\Http\Controllers;
 
+// use App\Models\AnggotaModel;
+use App\Models\BukuModel;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
-//panggil model BukuModel
-use App\Models\BukuModel;
 
 class BukuController extends Controller
 {
-    public function index()
-    {
-        $tbbuku = BukuModel::all();
-        return view('buku',['buku'=> $tbbuku ]);
-    }
-
-    
     //method untuk tampil data buku
     public function bukutampil()
-    {
-        $databuku = BukuModel::orderby('idbuku', 'ASC')
-        ->paginate(5);
+{
+    $databuku = BukuModel::orderBy('idbuku', 'ASC')->paginate(5);
+    return view('halaman/view_buku', ['tbbuku' => $databuku]);
+}
 
-        return view('halaman/view_buku',['tbbuku'=>$databuku]);
+
+//     //method untuk tambah data bukupublic function anggotatambah(Request $request)
+//     public function bukutambah(Request $request)
+//     {
+//        $request->validate( [
+//            'idbuku' => 'required',
+//         'judulbuku' => 'required',
+//         'kategori' => 'required',
+//         'pengarang' => 'required',
+//         'penerbit' => 'required',
+//         'status' => 'required'
+//         ]);
+// BukuModel::create([
+//            'idbuku' => $request->idbuku,
+//             'judulbuku' => $request->judulbuku,
+//             'kategori' => $request->kategori,
+//             'pengarang' => $request->pengarang,
+//             'penerbit' => $request->penerbit,
+//             'status' => $request->status
+            
+//         ]);
+//         return redirect('/buku');
+//     }
+
+
+
+public function bukutambah(Request $request) {
+    $request->validate([
+        'idbuku' => 'required',
+        'judulbuku' => 'required',
+        'kategori' => 'required',
+        'pengarang' => 'required',
+        'penerbit' => 'required',
+        'status' => 'required',
+    ]);
+
+    // Simpan ke DB
+    BukuModel::create($request->all());
+
+    return redirect('/buku')->with('success', 'Buku berhasil ditambahkan');
+}
+public function bukuhapus($idbuku)
+{
+    // Cek apakah data ada
+    $databuku = BukuModel::find($idbuku);
+
+    // Kalau null, kasih notif error
+    if (!$databuku) {
+        return redirect()->back()->with('error', 'Data buku gak ketemu.');
     }
 
-    //method untuk tambah data buku
-    public function bukutambah(Request $request)
-    {
-        $request->validate([
-            'idbuku' => 'required',
-            'judulbuku' => 'required',
-            'kategori' => 'required',
-            'pengarang' => 'required',
-            'penerbit' => 'required',
-            'status' => 'required'
-            
-        ]);
-
-        BukuModel::create([
-           'idbuku' => $request->id_buku,
-            'judulbuku' => $request->judulbuku,
-            'kategori' => $request->kategori,
-            'pengarang' => $request->pengarang,
-            'penerbit' => $request->penerbit,
-            'status' => $request->status
-            
-        ]);
-
-        return redirect('/buku');
-    }
-
-     //method untuk hapus data buku
-     public function bukuhapus($idbuku)
-     {
-         $databuku=BukuModel::find($idbuku);
-         $databuku->delete();
- 
-         return redirect()->back();
-     }
-
-
-    public function bukuedit($idbuku, Request $request)
+    // Kalau ada, hapus
+    $databuku->delete();
+    return redirect()->back()->with('success', 'Data buku berhasil dihapus.');
+}
+  public function bukuedit($idbuku, Request $request)
 {
     $request->validate([
         'idbuku' => 'required',
@@ -73,24 +82,21 @@ class BukuController extends Controller
         'status' => 'required'
     ]);
 
-    $data = BukuModel::find($idbuku);
-    $data->idbuku     = $request->idbuku;
-    $data->judulbuku  = $request->judulbuku;
-    $data->kategori   = $request->kategori;
-    $data->pengarang  = $request->pengarang;
-    $data->penerbit   = $request->penerbit;
-    $data->status     = $request->status;
+   $data = BukuModel::find($idbuku);
+    if (!$data) {
+        return redirect()->back()->with('error', 'Data tidak ditemukan.');
+    }
+
+    $data->judulbuku = $request->judulbuku;
+    $data->kategori  = $request->kategori;
+    $data->pengarang = $request->pengarang;
+    $data->penerbit  = $request->penerbit;
+    $data->status    = $request->status;
     $data->save();
 
     return redirect()->back()->with('success', 'Data berhasil diperbarui!');
 }
 
-// public function exportPdf()
-// {
-//     $databuku = BukuModel::orderby('idbuku', 'ASC') ->get();
-//     $pdf = Pdf::loadView('pdf.export-buku', ['buku' => $databuku]);
-//     return $pdf->download('laporan-buku-'.Carbon::now()->timestamp.'pdf');
-// }
 
 public function exportPdf()
 {
@@ -98,4 +104,5 @@ public function exportPdf()
     $pdf = Pdf::loadView('pdf.export-buku', ['buku' => $databuku]);
     return $pdf->stream('laporan-buku-'.Carbon::now()->timestamp.'.pdf');
 }
+
 }

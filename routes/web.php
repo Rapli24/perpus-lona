@@ -21,10 +21,19 @@ Route::get('/login', function () {
 Route::get('/', function () {
     return redirect()->route('login');
 });
-
 Route::get('/index', [AuthController::class, 'index'])->name('index');
 
-Route::get('/export-pdf-buku',[BukuController::class,'exportPdf']);
+// // Route untuk Home
+Route::get('/home', function () {
+    return view('view_home');
+});
+
+// Halaman dashboard (hanya bisa diakses setelah login)
+Route::get('/index', function () {
+    return view('index');
+})->middleware(['auth'])->name('index');
+
+
 
 // Route untuk Data Buku
 Route::get('/buku', [BukuController::class, 'bukutampil']);
@@ -32,11 +41,9 @@ Route::post('/buku/tambah', [BukuController::class, 'bukutambah']);
 Route::delete('/buku/hapus/{idbuku}', [BukuController::class, 'bukuhapus']);
 Route::put('/buku/edit/{idbuku}', [BukuController::class, 'bukuedit']);
 Route::post('/buku/laporanbuku', [BukuController::class, 'bukutambah']);
+Route::get('/export-pdf-buku',[BukuController::class,'exportPdf']);
 
-// // Route untuk Home
-Route::get('/home', function () {
-    return view('view_home');
-});
+
 
 // Route untuk Data Anggota
 Route::get('/anggota', [AnggotaController::class, 'anggotatampil']);

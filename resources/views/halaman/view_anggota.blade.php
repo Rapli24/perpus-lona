@@ -76,13 +76,6 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Kategori</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" name="kategori" value="{{ $a->kategori }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Status</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="status" value="{{ $a->status }}">
@@ -91,7 +84,7 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                        <button type="submit" class="btn btn-success">Edit</button>
+                                        <button type="submit" class="btn btn-success">Update</button>
                                     </div>
                                 </form>
                             </div>

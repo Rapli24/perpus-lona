@@ -13,6 +13,8 @@ class AnggotaController extends Controller
 {
     $dataanggota = AnggotaModel::orderBy('idanggota', 'ASC')->paginate(5);
     return view('halaman/view_anggota', ['tbanggota' => $dataanggota]);
+
+
 }
 
     //method untuk tambah data buku
@@ -52,7 +54,6 @@ public function anggotahapus($idanggota)
     $dataanggota->delete();
     return redirect()->back()->with('success', 'Data anggota berhasil dihapus.');
 }
-
 
 
     public function anggotaedit($idanggota, Request $request)
